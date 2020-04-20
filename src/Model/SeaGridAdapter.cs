@@ -12,9 +12,9 @@ namespace BattleshipsConvert
         private SeaGrid _MyGrid;
 
         /// <summary>
-    /// Create the SeaGridAdapter, with the grid, and it will allow it to be changed
-    /// </summary>
-    /// <param name="grid">the grid that needs to be adapted</param>
+        /// Create the SeaGridAdapter, with the grid, and it will allow it to be changed
+        /// </summary>
+        /// <param name="grid">the grid that needs to be adapted</param>
         public SeaGridAdapter(SeaGrid grid)
         {
             _MyGrid = grid;
@@ -22,10 +22,10 @@ namespace BattleshipsConvert
         }
 
         /// <summary>
-    /// MyGrid_Changed causes the grid to be redrawn by raising a changed event
-    /// </summary>
-    /// <param name="sender">the object that caused the change</param>
-    /// <param name="e">what needs to be redrawn</param>
+        /// MyGrid_Changed causes the grid to be redrawn by raising a changed event
+        /// </summary>
+        /// <param name="sender">the object that caused the change</param>
+        /// <param name="e">what needs to be redrawn</param>
         private void MyGrid_Changed(object sender, EventArgs e)
         {
             Changed?.Invoke(this, e);
@@ -33,11 +33,11 @@ namespace BattleshipsConvert
 
         /* TODO ERROR: Skipped RegionDirectiveTrivia */
         /// <summary>
-    /// Changes the discovery grid. Where there is a ship we will sea water
-    /// </summary>
-    /// <param name="x">tile x coordinate</param>
-    /// <param name="y">tile y coordinate</param>
-    /// <returns>a tile, either what it actually is, or if it was a ship then return a sea tile</returns>
+        /// Changes the discovery grid. Where there is a ship we will sea water
+        /// </summary>
+        /// <param name="x">tile x coordinate</param>
+        /// <param name="y">tile y coordinate</param>
+        /// <returns>a tile, either what it actually is, or if it was a ship then return a sea tile</returns>
         public TileView get_Item(int x, int y)
         {
             var result = _MyGrid.get_Item(x, y);
@@ -52,13 +52,13 @@ namespace BattleshipsConvert
         }
 
         /// <summary>
-    /// Indicates that the grid has been changed
-    /// </summary>
+        /// Indicates that the grid has been changed
+        /// </summary>
         public event EventHandler Changed;
 
         /// <summary>
-    /// Get the width of a tile
-    /// </summary>
+        /// Get the width of a tile
+        /// </summary>
         public int Width
         {
             get
@@ -68,8 +68,8 @@ namespace BattleshipsConvert
         }
 
         /// <summary>
-    /// Get the height of the tile
-    /// </summary>
+        /// Get the height of the tile
+        /// </summary>
         public int Height
         {
             get
