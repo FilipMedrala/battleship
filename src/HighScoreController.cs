@@ -79,7 +79,7 @@ static class HighScoreController
 
 			line = input.ReadLine();
 
-			s.Name = line.Substring(0, NAME_WIDTH);
+			s.Name = line.Substring(0, 12);
 			s.Value = Convert.ToInt32(line.Substring(NAME_WIDTH));
 			_Scores.Add(s);
 		}
