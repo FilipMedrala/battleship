@@ -74,7 +74,7 @@ static class DeploymentController
 			if (GameController.HumanPlayer.ReadyToDeploy & UtilityFunctions.IsMouseInRectangle(PLAY_BUTTON_LEFT, TOP_BUTTONS_TOP, PLAY_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT)) {
 				GameController.EndDeployment();
 			} else if (UtilityFunctions.IsMouseInRectangle(UP_DOWN_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT)) {
-				_currentDirection = Direction.LeftRight;
+				_currentDirection = Direction.UpDown;
 			} else if (UtilityFunctions.IsMouseInRectangle(LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT)) {
 				_currentDirection = Direction.LeftRight;
 			} else if (UtilityFunctions.IsMouseInRectangle(RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP, RANDOM_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT)) {
@@ -105,14 +105,26 @@ static class DeploymentController
 
 		if (row >= 0 & row < GameController.HumanPlayer.PlayerGrid.Height) {
 			if (col >= 0 & col < GameController.HumanPlayer.PlayerGrid.Width) {
-				//if in the area try to deploy
-				try {
-					GameController.HumanPlayer.PlayerGrid.MoveShip(row, col, _selectedShip, _currentDirection);
-				} catch (Exception ex) {
-					Audio.PlaySoundEffect(GameResources.GameSound("Error"));
-					UtilityFunctions.Message = ex.Message;
-				}
-			}
+                //if in the area try to deploy if not attempt to adjust postion
+                for (int i = 0; i < 7; i++) { 
+				    try {
+                        if (_currentDirection == Direction.UpDown)
+                        {
+                            GameController.HumanPlayer.PlayerGrid.MoveShip((row - i), col, _selectedShip, _currentDirection);
+                        }
+                        else {
+                            GameController.HumanPlayer.PlayerGrid.MoveShip(row, (col - i), _selectedShip, _currentDirection);
+                        }
+
+                        i = 7;
+                    } catch (Exception ex) {
+                        if (i == 7) {
+                            Audio.PlaySoundEffect(GameResources.GameSound("Error"));
+                            UtilityFunctions.Message = ex.Message;
+                        }
+				    }
+                }
+            }
 		}
 	}
 
