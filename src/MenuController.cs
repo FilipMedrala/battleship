@@ -244,12 +244,15 @@ static class MenuController
 	{
 		switch (menu) {
 			case MAIN_MENU:
+                Audio.PlaySoundEffect(GameResources.GameSound("Beep"));
 				PerformMainMenuAction(button);
 				break;
 			case SETUP_MENU:
+                Audio.PlaySoundEffect(GameResources.GameSound("Beep"));
 				PerformSetupMenuAction(button);
 				break;
 			case GAME_MENU:
+                Audio.PlaySoundEffect(GameResources.GameSound("Beep"));
 				PerformGameMenuAction(button);
 				break;
 		}
@@ -285,13 +288,16 @@ static class MenuController
 	{
 		switch (button) {
 			case SETUP_MENU_EASY_BUTTON:
+                Audio.PlaySoundEffect(GameResources.GameSound("Beep"));
 				GameController.SetDifficulty(AIOption.Easy);
 				break;
 			case SETUP_MENU_MEDIUM_BUTTON:
-				GameController.SetDifficulty(AIOption.Medium);
+				Audio.PlaySoundEffect(GameResources.GameSound("Beep"));
+                GameController.SetDifficulty(AIOption.Medium);
 				break;
 			case SETUP_MENU_HARD_BUTTON:
-				GameController.SetDifficulty(AIOption.Hard);
+				Audio.PlaySoundEffect(GameResources.GameSound("Beep"));
+                GameController.SetDifficulty(AIOption.Hard);
 				break;
 		}
 		//Always end state - handles exit button as well
@@ -306,16 +312,19 @@ static class MenuController
 	{
 		switch (button) {
 			case GAME_MENU_RETURN_BUTTON:
-				GameController.EndCurrentState();
+				Audio.PlaySoundEffect(GameResources.GameSound("Beep"));
+                GameController.EndCurrentState();
 				break;
 			case GAME_MENU_SURRENDER_BUTTON:
-				GameController.EndCurrentState();
+				Audio.PlaySoundEffect(GameResources.GameSound("Beep"));
+                GameController.EndCurrentState();
 				//end game menu
 				GameController.EndCurrentState();
 				//end game
 				break;
 			case GAME_MENU_QUIT_BUTTON:
-				GameController.AddNewState(GameState.Quitting);
+				Audio.PlaySoundEffect(GameResources.GameSound("Beep"));
+                GameController.AddNewState(GameState.Quitting);
 				break;
 		}
 	}

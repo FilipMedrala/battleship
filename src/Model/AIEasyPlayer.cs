@@ -52,22 +52,6 @@ public class AIEasyPlayer : AIPlayer
 	}
 
 	/// <summary>
-	/// TargetCoords is used when a ship has been hit and it will try and destroy
-	/// this ship
-	/// </summary>
-	/// <param name="row">row generated around the hit tile</param>
-	/// <param name="column">column generated around the hit tile</param>
-	// private void TargetCoords(ref int row, ref int column)
-	// {
-	// 	Location l = _Targets.Pop();
-
-	// 	if ((_Targets.Count == 0))
-	// 		_CurrentState = AIStates.Searching;
-	// 	row = l.Row;
-	// 	column = l.Column;
-	// }
-
-	/// <summary>
 	/// SearchCoords will randomly generate shots within the grid as long as its not hit that tile already
 	/// </summary>
 	/// <param name="row">the generated row</param>
@@ -95,16 +79,5 @@ public class AIEasyPlayer : AIPlayer
 	 	}
 	}
 
-	/// <summary>
-	/// AddTarget will add the targets it will shoot onto a stack
-	/// </summary>
-	/// <param name="row">the row of the targets location</param>
-	/// <param name="column">the column of the targets location</param>
-	// private void AddTarget(int row, int column)
-	// {
 
-	// 	if (row >= 0 && column >= 0 && row < EnemyGrid.Height && column < EnemyGrid.Width && EnemyGrid[row, column] == TileView.Sea) {
-	// 		_Targets.Push(new Location(row, column));
-	// 	}
-	// }
 }
